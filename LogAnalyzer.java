@@ -14,15 +14,28 @@ public class LogAnalyzer
     /**
      * Create an object to analyze hourly web accesses.
      */
-    public LogAnalyzer()
+    public LogAnalyzer(String filename)
     { 
         // Create the array object to hold the hourly
         // access counts.
         hourCounts = new int[24];
         // Create the reader to obtain the data.
-        reader = new LogfileReader();
+        reader = new LogfileReader(filename);
     }
 
+    
+    
+    public void printGreater( double mean){
+        
+        double[] marks ={ 1.1,5.7,6.6,9.2,10.4};
+        
+        for(int index=0 ; index <marks.length;index++){
+            if (marks[index]> mean){
+                System.out.println(marks[index]);
+            }
+        }
+    }
+    
     /**
      * Analyze the hourly access data from the log file.
      */
@@ -43,8 +56,10 @@ public class LogAnalyzer
     public void printHourlyCounts()
     {
         System.out.println("Hr: Count");
-        for(int hour = 0; hour < hourCounts.length; hour++) {
+        int hour = 0;
+        while (hour < hourCounts.length) {
             System.out.println(hour + ": " + hourCounts[hour]);
+            hour++;
         }
     }
     
@@ -55,6 +70,42 @@ public class LogAnalyzer
     {
         reader.printData();
     }
+         public int numberOfAccesses() {
+        int total = 0;
+        for (int count : hourCounts) {
+            total += count;
+        }
+        return total;
+    }
+    
+     public String busiestHour(){
+         int maxCount = 0;
+         int busiestHour = -1;
+         for ( int i=0; i < hourCounts.length;i++){
+             if (hourCounts[i]> maxCount){
+                 maxCount = hourCounts[i];
+                 busiestHour= i;
+             }
+             }
+             return busiestHour + " is the busiest hour";
+     }
+     
+     public String quiestestHour(){
+         int lowCount= hourCounts[0];
+         int quietestHour= 0;
+         for (int i = 1; i < hourCounts.length;i++){
+             if(hourCounts[i]< lowCount){
+                 lowCount = hourCounts[i];
+                 quietestHour= i;
+             }
+         }
+         return quietestHour + " is the quiesteshour";
+     }
+        
+        
+        
+    }
+    
     /*
      * 
      *1.Busiest time of the say is hour 18
@@ -68,6 +119,13 @@ public class LogAnalyzer
     8. It should be new double[50];
     9. Its out of bonds of 24
     11.
-    
+    public void printGreater( double mean){
+        for( index=0 ; index <= marks.length;index++){
+            if (marks(index)> mean){
+                System.outprintln(marks[index]);
+            }
+        }
+    }
+    13.
     */
-}
+
