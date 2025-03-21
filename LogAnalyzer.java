@@ -22,7 +22,19 @@ public class LogAnalyzer
         // Create the reader to obtain the data.
         reader = new LogfileReader(filename);
     }
-
+// not working but compiles 
+    public String busiestTwoHourPeriod(){
+         int maxSum = 0;
+         int busiestStartHour = -1;
+         for ( int i=0; i < hourCounts.length;i++){
+             int sum= hourCounts[i] + hourCounts[ i + 2];
+             if (sum>maxSum){
+                 maxSum=sum;
+                 busiestStartHour= i;
+             }
+             }
+             return busiestStartHour+ " is the busiest two hour";
+     }
     
     
     public void printGreater( double mean){
@@ -127,5 +139,6 @@ public class LogAnalyzer
         }
     }
     13.
+     17. -1
     */
 
