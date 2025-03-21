@@ -55,6 +55,19 @@ public class LogAnalyzer
     {
         reader.printData();
     }
-    //
-
+    /*
+     * 
+     *1.Busiest time of the say is hour 18
+    //2.privaye int[] person = {}
+    //3. private boolean {} vacant={};
+    //5. 1- the[] before the int
+    //   2- 2 boolean [] occupied = new boolean[500];
+    //6. double[60] readings;
+     String[90] urls;
+    7. 20 Strings
+    8. It should be new double[50];
+    9. Its out of bonds of 24
+    11.
+    
+    */
 }
